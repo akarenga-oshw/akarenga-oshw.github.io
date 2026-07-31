@@ -13,6 +13,7 @@ nav:
 
 theme:
   name: material
+  custom_dir: overrides
   palette:
     scheme: slate
     primary: black
@@ -21,3 +22,12 @@ plugins:
   - search
   - meta
   - tags
+  - git-revision-date-localized:
+      locale: ja
+      timezone: Asia/Tokyo
+      # 表示は「1か月前」のような相対表記 (ツールチップに正確な日時が出る)
+      type: timeago
+      # 作成日も表示する
+      enable_creation_date: true
+      # git 履歴が取得できない場合 (未コミット、浅い clone) はビルド日時を使う
+      fallback_to_build_date: true

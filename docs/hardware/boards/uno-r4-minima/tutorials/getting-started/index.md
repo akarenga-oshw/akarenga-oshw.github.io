@@ -1,6 +1,7 @@
 ---
 title: Getting Started
 description: Akarenga UNO R4 Minima の開発環境をセットアップし、LED を点滅させるまでの手順を説明します。
+author: Akarenga OSHW
 tags:
   - UNO R4 Minima
   - インストール
