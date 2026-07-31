@@ -1,0 +1,4 @@
+# このフォルダ配下すべてのページに適用される既定の frontmatter
+# ページ側の frontmatter が同じキーを持つ場合はそちらが優先されます
+tags:
+  - UNO R4 Minima

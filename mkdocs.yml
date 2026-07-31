@@ -1,7 +1,23 @@
 site_name: Akarenga OSHW Docs
 
+nav:
+  - ホーム: index.md
+  - ハードウェア:
+      - ボード:
+          - hardware/boards/index.md
+          - Akarenga UNO R4 Minima:
+              - hardware/boards/uno-r4-minima/index.md
+              - チュートリアル:
+                  - Getting Started: hardware/boards/uno-r4-minima/tutorials/getting-started/index.md
+  - タグ: tags.md
+
 theme:
   name: material
   palette:
     scheme: slate
     primary: black
+
+plugins:
+  - search
+  - meta
+  - tags
