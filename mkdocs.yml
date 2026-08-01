@@ -11,9 +11,25 @@ nav:
                   - Getting Started: hardware/boards/uno-r4-minima/tutorials/getting-started/index.md
   - タグ: tags.md
 
+markdown_extensions:
+  # コードブロックのシンタックスハイライト
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  # 外部ファイルの取り込み (--8<-- "path")。パスは docs/ 起点
+  - pymdownx.snippets:
+      base_path:
+        - docs
+  - pymdownx.superfences
+
 theme:
   name: material
   custom_dir: overrides
+  features:
+    # コードブロックにコピーボタンを表示
+    - content.code.copy
   palette:
     scheme: slate
     primary: black
