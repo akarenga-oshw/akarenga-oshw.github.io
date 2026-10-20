@@ -52,7 +52,7 @@ OSごとの基本操作は次のとおりです。
 
 この手順書ではArduino IDE 2を使用します。IDE 1.8.19はLegacy版のため、画面やメニューの位置が異なります。
 
-操作GIFはWindows 11・Arduino IDE 2.3.10の画面です。GIFをクリックすると元のサイズで表示できます。
+操作GIFはWindows 11・Arduino IDE 2.3.10の画面です。操作の要所を順に表示し、待ち時間を短縮しています。GIFをクリックすると元のサイズで表示できます。
 
 ## 4. 公式のArduino UNO R4 Boardsをインストールする
 
@@ -66,7 +66,10 @@ OSごとの基本操作は次のとおりです。
     ```
 
 3. Arduino公式の`Arduino UNO R4 Boards`を選び、**インストール**をクリックします。
-4. インストール完了の表示を確認します。
+4. Windowsでドライバーの確認画面が出た場合は、Arduino公式パッケージのインストールに伴うものか確認し、**はい**を選びます。
+5. パッケージ名の下に`installed`と表示されるまで待ちます。
+
+<p><a href="assets/install-official-board.gif"><img src="assets/install-official-board.gif" alt="ボードマネージャーでArduino UNO R4 Boardsを検索し、インストールとドライバー確認を経て完了する操作" width="1000" height="712" loading="lazy"></a></p>
 
 ## 5. AkarengaのボードマネージャーURLを登録する
 
@@ -88,6 +91,7 @@ OSごとの基本操作は次のとおりです。
 4. すでに別のURLが登録されている場合は削除せず、新しい行へ追加します。
 5. **OK**を押してURL一覧を閉じ、もう一度**OK**を押して設定を保存します。
 
+<p><a href="assets/add-board-manager-url.gif"><img src="assets/add-board-manager-url.gif" alt="ファイルの基本設定から追加のボードマネージャーのURLを開き、AkarengaのURLを登録して保存する操作" width="1000" height="712" loading="lazy"></a></p>
 
 ## 6. Akarenga用ボードパッケージをインストールする
 
@@ -100,7 +104,10 @@ OSごとの基本操作は次のとおりです。
 
 3. `Akarenga UNO R4 Boards`を選びます。
 4. バージョン欄を確認し、**インストール**をクリックします。
-5. インストール完了の表示を確認します。
+5. Windowsでドライバーの確認画面が出た場合は、Akarenga用パッケージのインストールに伴うものか確認し、**はい**を選びます。
+6. パッケージ名の下に`installed`と表示されるまで待ちます。
+
+<p><a href="assets/install-akarenga-board.gif"><img src="assets/install-akarenga-board.gif" alt="ボードマネージャーでAkarengaを検索し、バージョンを選んでインストールを完了する操作" width="1000" height="712" loading="lazy"></a></p>
 
 2026年7月24日時点の開発版では、表示バージョンは`1.5.3-xtal2`です。今後バージョンが更新された場合は、プロジェクトから特別な指定がない限り新しい安定版を使用し、実際に使ったバージョンを記録してください。
 
