@@ -13,7 +13,7 @@ tags:
 Arduino IDEを使い、Akarenga UNOの開発環境を導入して、LED点滅（Blink）とシリアル通信を確認するまでの手順です。
 
 > ボードパッケージ：`Akarenga UNO R4 Boards 1.5.3-xtal2`  
-> ボード名：`Akarenga UNO R4`  
+> ボード名（IDEでの表示）：`Arduino UNO R4 Minima`（`Akarenga UNO R4 Boards`内）
 
 ## 1. この手順でできること
 
@@ -52,6 +52,8 @@ OSごとの基本操作は次のとおりです。
 
 この手順書ではArduino IDE 2を使用します。IDE 1.8.19はLegacy版のため、画面やメニューの位置が異なります。
 
+操作GIFはWindows 11・Arduino IDE 2.3.10の画面です。GIFをクリックすると元のサイズで表示できます。
+
 ## 4. 公式のArduino UNO R4 Boardsをインストールする
 
 現在のAkarenga開発版は、コンパイラなどのツールチェーンをArduino公式パッケージから利用します。先に公式のUNO R4用パッケージをインストールしてください。
@@ -59,9 +61,9 @@ OSごとの基本操作は次のとおりです。
 1. Arduino IDE左側の**ボードマネージャー**アイコンをクリックします。
 2. 検索欄に次を入力します。
 
-```text
-Arduino UNO R4 Boards
-```
+    ```text
+    Arduino UNO R4 Boards
+    ```
 
 3. Arduino公式の`Arduino UNO R4 Boards`を選び、**インストール**をクリックします。
 4. インストール完了の表示を確認します。
@@ -79,9 +81,9 @@ Arduino UNO R4 Boards
 2. 入力欄の右側にあるボタンを押し、URL一覧を開きます。
 3. 次のURLを1行で貼り付けます。
 
-```text
-https://akarenga-oshw.github.io/arduino-board-index/dev/package_akarenga_index.json
-```
+    ```text
+    https://akarenga-oshw.github.io/arduino-board-index/dev/package_akarenga_index.json
+    ```
 
 4. すでに別のURLが登録されている場合は削除せず、新しい行へ追加します。
 5. **OK**を押してURL一覧を閉じ、もう一度**OK**を押して設定を保存します。
@@ -92,9 +94,9 @@ https://akarenga-oshw.github.io/arduino-board-index/dev/package_akarenga_index.j
 1. Arduino IDE左側の**ボードマネージャー**を開きます。
 2. 検索欄に次を入力します。
 
-```text
-Akarenga
-```
+    ```text
+    Akarenga
+    ```
 
 3. `Akarenga UNO R4 Boards`を選びます。
 4. バージョン欄を確認し、**インストール**をクリックします。
@@ -105,9 +107,13 @@ Akarenga
 ## 7. ボードとポートを選択する
 
 1. Akarenga UNOをUSBケーブルでパソコンに接続します。
-2. Arduino IDE上部の`ツール>ボード`をクリックします。
-3. 一覧から`Akarenga UNO R4`を選びます。
-4. Akarenga UNOに対応するポートを`ツール>ポート`から選びます。
+2. Arduino IDE上部の**ツール → ボード**を開きます。
+3. **Akarenga UNO R4 Boards → Arduino UNO R4 Minima**を選びます。
+4. Akarenga UNOに対応するポートを**ツール → ポート**から選びます。
+
+ボード名は`Arduino UNO R4 Minima`と表示されます。必ず**Akarenga UNO R4 Boards**内から選んでください。
+
+<p><a href="assets/board-selection.gif"><img src="assets/board-selection.gif" alt="ツールからボードを開き、Akarenga UNO R4 Boards内のArduino UNO R4 Minimaを選ぶ操作" width="1000" height="490" loading="lazy"></a></p>
 
 ポート名の例は次のとおりです。実際の表示は環境により異なります。
 
@@ -124,6 +130,8 @@ Akarenga
 
 Arduino IDEのメニューから、次を選びます。
 `ファイル > スケッチ例 > 01.Basics > Blink`
+
+<p><a href="assets/open-blink.gif"><img src="assets/open-blink.gif" alt="ファイルからスケッチ例、01.Basics、Blinkの順に開く操作" width="1000" height="490" loading="lazy"></a></p>
 
 次の内容と同様のスケッチが開きます。
 
@@ -142,7 +150,7 @@ void loop() {
 
 ### 8.2 書き込む
 
-1. 選択中のボードが`Akarenga UNO R4`であることを確認します。
+1. **Akarenga UNO R4 Boards**内の`Arduino UNO R4 Minima`を選択していることを確認します。
 2. 選択中のポートを確認します。
 3. Arduino IDE左上の**書き込み**ボタン（右向き矢印）をクリックします。
 4. 画面下部に書き込み完了の表示が出るまで待ちます。
@@ -174,7 +182,7 @@ void loop() {
 ```
 
 1. スケッチを書き込みます。
-2. Arduino IDE右上の`ツール > シリアルモニター`を開きます。
+2. Arduino IDE上部の**ツール → シリアルモニタ**を開きます。
 3. 通信速度を`115200 baud`に設定します。
 4. `millis = ...`が約1秒ごとに表示されることを確認します。
 
