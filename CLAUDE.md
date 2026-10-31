@@ -8,16 +8,19 @@ Akarenga Open Source Hardware (OSHW) プロジェクトのドキュメントサ�
 
 ## Repository Architecture
 
-ソースと配信を 2 つのリポジトリに分けている。**ソースは常に private に留め、public 側にはビルド済み HTML だけを送る**。これは公開前の下書きが GitHub 上でクロールされるのを防ぐため。
+単一の public リポジトリ `akarenga-oshw/akarenga-oshw.github.io` でソースと配信の両方を行う。
 
-| リポジトリ | 可視性 | 役割 |
-|---|---|---|
-| `akarenga-oshw.github.io-develop` (このリポジトリ) | private | MkDocs ソース。編集はすべてここで行う |
-| `akarenga-oshw.github.io` | public | `gh-pages` ブランチで配信するのみ。ソースは置かない |
+| ブランチ | 役割 |
+|---|---|
+| `main` | **公開ブランチ**。push されると Actions がビルドし `gh-pages` へデプロイ |
+| `gh-pages` | ビルド済み HTML。GitHub Pages の配信元。直接編集しない |
+| 作業ブランチ | PR 経由で `main` にマージする |
 
-デプロイの流れ: このリポジトリの `main` に push → GitHub Actions が `mkdocs build` → `peaceiris/actions-gh-pages` が deploy key (`ACTIONS_DEPLOY_KEY`) で public リポジトリの `gh-pages` へ push → `https://akarenga-oshw.github.io/` に反映。
+デプロイの流れ: `main` に push → GitHub Actions が `mkdocs gh-deploy --force` を実行 → `gh-pages` が更新され `https://akarenga-oshw.github.io/` に反映。
 
-`main` への push が公開スイッチになる。公開前の作業は `develop` など別ブランチで行い、`main` にマージしない。
+公開を遅らせたいページは、そのブランチを `main` にマージせず PR を開いたままにする。
+
+**ハードウェア設計データ (回路図・ガーバー・BOM) は、リリース承認が出るまでリポジトリに入れない。** public リポジトリでは git 履歴からファイルを完全に削除できないため。
 
 ## Commands
 
@@ -27,7 +30,7 @@ mkdocs serve                       # ローカルプレビュー (http://127.0.0
 mkdocs build                       # 静的サイト生成 → site/
 ```
 
-`mkdocs gh-deploy` は使わない (public リポジトリへの配信は Actions が担うため)。
+デプロイは Actions が行うため、手元から `mkdocs gh-deploy` を実行する必要はない。
 
 ## Notes
 
