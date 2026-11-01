@@ -11,7 +11,14 @@ nav:
                   - Getting Started: hardware/boards/uno-r4-minima/tutorials/getting-started/index.md
   - タグ: tags.md
 
+extra_css:
+  - stylesheets/extra.css
+
 markdown_extensions:
+  # 囲み注記 (!!! note "タイトル")
+  - admonition
+  # 折りたたみ式の注記 (??? note "タイトル")
+  - pymdownx.details
   # コードブロックのシンタックスハイライト
   - pymdownx.highlight:
       anchor_linenums: true
