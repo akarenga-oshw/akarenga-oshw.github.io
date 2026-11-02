@@ -1,0 +1,1349 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Akarenga UNO R4 Minima の開発環境をセットアップし、LED を点滅させるまでの手順を説明します。">
+      
+      
+        <meta name="author" content="Yukura-dev">
+      
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../../../../../tags/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Getting Started - Akarenga OSHW Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#akarenga-uno" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Akarenga OSHW Docs" class="md-header__button md-logo" aria-label="Akarenga OSHW Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Akarenga OSHW Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Getting Started
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Akarenga OSHW Docs" class="md-nav__button md-logo" aria-label="Akarenga OSHW Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Akarenga OSHW Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ハードウェア
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ハードウェア
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ボード
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ボード
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ボード一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Akarenga UNO R4 Minima
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Akarenga UNO R4 Minima
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Akarenga UNO R4 Minima
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2_2" id="__nav_2_1_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    チュートリアル
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    チュートリアル
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. この手順でできること
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 必要なもの
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-arduino-ide-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Arduino IDE 2をインストールする
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-arduino-uno-r4-boards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 公式のArduino UNO R4 Boardsをインストールする
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-akarengaurl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. AkarengaのボードマネージャーURLを登録する
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. AkarengaのボードマネージャーURLを登録する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 設定画面を開く
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 URLを追加する
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-akarenga" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Akarenga用ボードパッケージをインストールする
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. ボードとポートを選択する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-blink" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Blinkを書き込む
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Blinkを書き込む">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 サンプルを開く
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 書き込む
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. シリアルモニターを確認する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 参考リンク
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    タグ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. この手順でできること
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 必要なもの
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-arduino-ide-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Arduino IDE 2をインストールする
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-arduino-uno-r4-boards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 公式のArduino UNO R4 Boardsをインストールする
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-akarengaurl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. AkarengaのボードマネージャーURLを登録する
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. AkarengaのボードマネージャーURLを登録する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 設定画面を開く
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 URLを追加する
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-akarenga" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Akarenga用ボードパッケージをインストールする
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. ボードとポートを選択する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-blink" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Blinkを書き込む
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Blinkを書き込む">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 サンプルを開く
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 書き込む
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. シリアルモニターを確認する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 参考リンク
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../../../../tags/#tag:arduino-ide" class="md-tag">Arduino IDE</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../../../tags/#tag:uno-r4-minima" class="md-tag">UNO R4 Minima</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../../../tags/#tag:インストール" class="md-tag">インストール</a>
+      
+    
+  </nav>
+
+
+
+<h1 id="akarenga-uno">Akarenga UNO 導入手順</h1>
+<p>Arduino IDEを使い、Akarenga UNOの開発環境を導入して、LED点滅（Blink）とシリアル通信を確認するまでの手順です。</p>
+<blockquote>
+<p>ボードパッケージ：<code>Akarenga UNO R4 Boards 1.5.3-xtal2</code><br />
+ボード名（IDEでの表示）：<code>Arduino UNO R4 Minima</code>（<code>Akarenga UNO R4 Boards</code>内）</p>
+</blockquote>
+<h2 id="1">1. この手順でできること</h2>
+<p>この手順を最後まで行うと、次の状態になります。</p>
+<ul>
+<li>Arduino IDEからAkarenga UNOを選択できる</li>
+<li>Akarenga UNO用のスケッチをコンパイルして書き込める</li>
+<li>ボード上のLEDを1秒間隔で点滅させられる</li>
+<li>シリアルモニターでAkarenga UNOからの文字を確認できる</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Akarenga用ボードパッケージには、12 MHzメイン水晶と32.768 kHz RTC水晶を使うためのCoreが含まれます。通常の利用者が水晶用のソースコードや設定ファイルを書き換える必要はありません。</p>
+</div>
+<h2 id="2">2. 必要なもの</h2>
+<ul>
+<li>Akarenga UNO本体</li>
+<li>Akarenga UNOとパソコンを接続できるUSBデータ通信対応TypeCケーブル</li>
+<li>Windows 10以降、macOS 10.15以降、または64ビットLinuxのパソコン</li>
+<li>インターネット接続</li>
+<li>Arduino IDE 2</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">USBケーブルに注意</p>
+<p>充電専用のUSBケーブルでは書き込みできません。データ通信に対応したケーブルを使用してください。</p>
+</div>
+<h2 id="3-arduino-ide-2">3. Arduino IDE 2をインストールする</h2>
+<ol>
+<li><a href="https://www.arduino.cc/en/software/">Arduino公式ダウンロードページ</a>を開きます。</li>
+<li>使用しているOSに合ったArduino IDE 2の安定版をダウンロードします。</li>
+<li>ダウンロードしたファイルを開き、画面の案内に従ってインストールします。</li>
+<li>Arduino IDEを起動します。</li>
+</ol>
+<p>OSごとの基本操作は次のとおりです。</p>
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>インストール方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows</td>
+<td><code>.exe</code>を実行し、インストーラーの案内に従う</td>
+</tr>
+<tr>
+<td>macOS</td>
+<td><code>.dmg</code>を開き、Arduino IDEを「アプリケーション」へ移動する</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>AppImageに実行権限を付けて起動する</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>この手順書ではArduino IDE 2を使用します。IDE 1.8.19はLegacy版のため、画面やメニューの位置が異なります。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>操作GIFはWindows 11・Arduino IDE 2.3.10の画面です。操作の要所を順に表示し、待ち時間を短縮しています。GIFをクリックすると元のサイズで表示できます。</p>
+</div>
+<h2 id="4-arduino-uno-r4-boards">4. 公式のArduino UNO R4 Boardsをインストールする</h2>
+<p>現在のAkarenga開発版は、コンパイラなどのツールチェーンをArduino公式パッケージから利用します。先に公式のUNO R4用パッケージをインストールしてください。</p>
+<ol>
+<li>Arduino IDE左側の<strong>ボードマネージャー</strong>アイコンをクリックします。</li>
+<li>
+<p>検索欄に次を入力します。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Arduino UNO R4 Boards
+</span></code></pre></div>
+</li>
+<li>
+<p>Arduino公式の<code>Arduino UNO R4 Boards</code>を選び、<strong>インストール</strong>をクリックします。</p>
+</li>
+<li>Windowsでドライバーの確認画面が出た場合は、Arduino公式パッケージのインストールに伴うものか確認し、<strong>はい</strong>を選びます。</li>
+<li>パッケージ名の下に<code>installed</code>と表示されるまで待ちます。</li>
+</ol>
+<p><a href="assets/install-official-board.gif"><img src="assets/install-official-board.gif" alt="ボードマネージャーでArduino UNO R4 Boardsを検索し、インストールとドライバー確認を経て完了する操作" width="1000" height="712" loading="lazy"></a></p>
+
+<h2 id="5-akarengaurl">5. AkarengaのボードマネージャーURLを登録する</h2>
+<h3 id="51">5.1 設定画面を開く</h3>
+<ul>
+<li>Windows／Linux：<strong>ファイル → 基本設定</strong></li>
+<li>macOS：<strong>Arduino IDE → 設定</strong></li>
+</ul>
+<h3 id="52-url">5.2 URLを追加する</h3>
+<ol>
+<li><strong>追加のボードマネージャーのURL</strong>を探します。</li>
+<li>入力欄の右側にあるボタンを押し、URL一覧を開きます。</li>
+<li>
+<p>次のURLを1行で貼り付けます。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>https://akarenga-oshw.github.io/arduino-board-index/package_akarenga_index.json
+</span></code></pre></div>
+</li>
+<li>
+<p>すでに別のURLが登録されている場合は削除せず、新しい行へ追加します。</p>
+</li>
+<li><strong>OK</strong>を押してURL一覧を閉じ、もう一度<strong>OK</strong>を押して設定を保存します。</li>
+</ol>
+<p><a href="assets/add-board-manager-url.gif"><img src="assets/add-board-manager-url.gif" alt="ファイルの基本設定から追加のボードマネージャーのURLを開き、AkarengaのURLを登録して保存する操作" width="1000" height="712" loading="lazy"></a></p>
+
+<h2 id="6-akarenga">6. Akarenga用ボードパッケージをインストールする</h2>
+<ol>
+<li>Arduino IDE左側の<strong>ボードマネージャー</strong>を開きます。</li>
+<li>
+<p>検索欄に次を入力します。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Akarenga
+</span></code></pre></div>
+</li>
+<li>
+<p><code>Akarenga UNO R4 Boards</code>を選びます。</p>
+</li>
+<li>バージョン欄を確認し、<strong>インストール</strong>をクリックします。</li>
+<li>Windowsでドライバーの確認画面が出た場合は、Akarenga用パッケージのインストールに伴うものか確認し、<strong>はい</strong>を選びます。</li>
+<li>パッケージ名の下に<code>installed</code>と表示されるまで待ちます。</li>
+</ol>
+<p><a href="assets/install-akarenga-board.gif"><img src="assets/install-akarenga-board.gif" alt="ボードマネージャーでAkarengaを検索し、バージョンを選んでインストールを完了する操作" width="1000" height="712" loading="lazy"></a></p>
+
+<div class="admonition note">
+<p class="admonition-title">バージョンについて</p>
+<p>2026年11月1日時点の開発版では、表示バージョンは<code>1.5.3-akarenga.1</code>です。今後バージョンが更新された場合は、プロジェクトから特別な指定がない限り新しい安定版を使用し、実際に使ったバージョンを記録してください。</p>
+</div>
+<h2 id="7">7. ボードとポートを選択する</h2>
+<ol>
+<li>Akarenga UNOをUSBケーブルでパソコンに接続します。</li>
+<li>Arduino IDE上部の<strong>ツール → ボード</strong>を開きます。</li>
+<li><strong>Akarenga UNO R4 Boards → Akarenga UNO R4 Minima</strong>を選びます。</li>
+<li>Akarenga UNOに対応するポートを<strong>ツール → ポート</strong>から選びます。</li>
+</ol>
+<p><a href="assets/board-selection.gif"><img src="assets/board-selection.gif" alt="ツールからボードを開き、Akarenga UNO R4 Boards内のArduino UNO R4 Minimaを選ぶ操作" width="1000" height="490" loading="lazy"></a></p>
+
+<p>ポート名の例は次のとおりです。実際の表示は環境により異なります。</p>
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>ポート名の例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows</td>
+<td><code>COM3</code>、<code>COM4</code></td>
+</tr>
+<tr>
+<td>macOS</td>
+<td><code>/dev/cu.usbmodem...</code></td>
+</tr>
+<tr>
+<td>Linux</td>
+<td><code>/dev/ttyACM0</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-blink">8. Blinkを書き込む</h2>
+<h3 id="81">8.1 サンプルを開く</h3>
+<p>Arduino IDEのメニューから、次を選びます。
+<code>ファイル &gt; スケッチ例 &gt; 01.Basics &gt; Blink</code></p>
+<p><a href="assets/open-blink.gif"><img src="assets/open-blink.gif" alt="ファイルからスケッチ例、01.Basics、Blinkの順に開く操作" width="1000" height="490" loading="lazy"></a></p>
+
+<p>次の内容と同様のスケッチが開きます。</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">}</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="82">8.2 書き込む</h3>
+<ol>
+<li><code>Arduino UNO R4 Minima</code>を選択していることを確認します。</li>
+<li>選択中のポートを確認します。</li>
+<li>Arduino IDE左上の<strong>書き込み</strong>ボタン（右向き矢印）をクリックします。</li>
+<li>画面下部に書き込み完了の表示が出るまで待ちます。</li>
+<li>ボード上の内蔵LEDが約1秒ごとに点灯・消灯することを確認します。</li>
+</ol>
+<p>LEDが点滅すれば、コンパイル、USB書き込み、メインクロック、基本的なArduino関数が動作しています。</p>
+<h2 id="9">9. シリアルモニターを確認する</h2>
+<p>新しいスケッチへ次を貼り付けます。</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Serial</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">millis</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="c1">// シリアル接続を最大5秒待つ</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Akarenga UNO serial test"</span><span class="p">);</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">}</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"millis = "</span><span class="p">);</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">millis</span><span class="p">());</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="p">}</span>
+</span></code></pre></div>
+<ol>
+<li>スケッチを書き込みます。</li>
+<li>Arduino IDE上部の<strong>ツール → シリアルモニタ</strong>を開きます。</li>
+<li>通信速度を<code>115200 baud</code>に設定します。</li>
+<li><code>millis = ...</code>が約1秒ごとに表示されることを確認します。</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>最初の<code>Akarenga UNO serial test</code>が見えない場合でも、<code>millis</code>の値が増え続けていればシリアル通信は正常です。シリアルモニターを開いたまま再起動すると、最初の行も確認しやすくなります。</p>
+</div>
+<h2 id="10">10. 参考リンク</h2>
+<ul>
+<li><a href="https://akarenga-oshw.github.io/">Akarenga OSHW ドキュメント</a></li>
+<li><a href="https://akarenga-oshw.github.io/arduino-board-index/dev/package_akarenga_index.json">Akarenga開発版ボードマネージャーJSON</a></li>
+<li><a href="https://support.arduino.cc/hc/en-us/articles/360019833020-Download-and-install-Arduino-IDE">Arduino IDEのダウンロードとインストール</a></li>
+<li><a href="https://support.arduino.cc/hc/en-us/articles/360016466340-Add-third-party-platforms-to-the-Boards-Manager-in-Arduino-IDE">追加のボードマネージャーURLを登録する方法</a></li>
+<li><a href="https://docs.arduino.cc/software/ide-v2/tutorials/ide-v2-board-manager/">Arduino IDE 2でボードパッケージをインストールする方法</a></li>
+</ul>
+<hr />
+
+
+
+
+  
+    
+      
+    
+  
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026年11月2日 21:03:57 JST"><span class="timeago" datetime="2026-11-02T21:03:57+09:00" locale="ja"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月2日 21:03:57 JST">2026-11-02</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026年7月31日 15:44:10 JST"><span class="timeago" datetime="2026-07-31T15:44:10+09:00" locale="ja"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月31日 15:44:10 JST">2026-07-31</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Author">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+      
+    </span>
+    Yukura-dev
+  </span>
+
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../../../../js/timeago.min.js"></script>
+      
+        <script src="../../../../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  </body>
+</html>

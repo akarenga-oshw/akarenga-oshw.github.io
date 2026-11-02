@@ -1,0 +1,89 @@
+/* Akarenga OSHW サイト独自のスタイル
+   - ブリックレッドを差し色として使う (ヘッダーは黒のまま)
+   - レンガ模様は .brick-band クラスとフッターに適用 */
+
+:root {
+  --akarenga-brick: #a8432f;        /* ブリックレッド (基準) */
+  --akarenga-brick-bright: #d4664f; /* 暗い背景で読みやすい明度 */
+  --akarenga-mortar: #6d534a;       /* 目地 */
+}
+
+/* ---- 差し色 ---- */
+
+[data-md-color-scheme="slate"] {
+  --md-typeset-a-color: var(--akarenga-brick-bright);
+  --md-accent-fg-color: var(--akarenga-brick-bright);
+  --md-accent-fg-color--transparent: rgba(212, 102, 79, 0.1);
+}
+
+/* 見出しのアクセント。既定では付けない。
+   使う場合は以下のいずれかのコメントを外す。
+
+   案A: 細い控えめな下線
+.md-typeset h2 {
+  border-bottom: 1px solid rgba(168, 67, 47, 0.45);
+  padding-bottom: 0.25em;
+}
+
+   案B: 見出し左の短いアクセントバー
+.md-typeset h2 {
+  border-left: 3px solid var(--akarenga-brick);
+  padding-left: 0.5em;
+}
+*/
+
+/* 選択範囲 */
+::selection {
+  background: rgba(212, 102, 79, 0.35);
+}
+
+/* ---- レンガ模様 ---- */
+/* 60x40 のタイルに 2 段分を描いた SVG。段ごとに半個ずらす走り目地 */
+
+:root {
+  --akarenga-brick-pattern: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='40' viewBox='0 0 60 40'%3E%3Crect width='60' height='40' fill='%236d534a'/%3E%3Cg fill='%23a8432f'%3E%3Crect x='1' y='1' width='28' height='18'/%3E%3Crect x='31' y='1' width='28' height='18'/%3E%3Crect x='-14' y='21' width='28' height='18'/%3E%3Crect x='16' y='21' width='28' height='18'/%3E%3Crect x='46' y='21' width='28' height='18'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* 本文中で使う帯。Markdown に <div class="brick-band">...</div> と書く */
+.brick-band {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+    var(--akarenga-brick-pattern);
+  background-size: auto, 60px 40px;
+  border-radius: 4px;
+  padding: 1.6rem 1.2rem;
+  margin: 1.5rem 0;
+  color: #fff;
+}
+
+.brick-band > :first-child { margin-top: 0; }
+.brick-band > :last-child { margin-bottom: 0; }
+
+/* フッターにレンガ模様を敷く */
+.md-footer-meta {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)),
+    var(--akarenga-brick-pattern);
+  background-size: auto, 60px 40px;
+}
+
+/* ---- 注記 (admonition) ---- */
+/* 既定では枠線全体が種類ごとの原色になり主張が強いので、
+   枠線とタイトル帯は共通の薄いグレーにし、種類の色はアイコンだけに残す */
+
+/* Material 側は .md-typeset .admonition.warning のように型名まで含めた
+   セレクタで枠線色を指定しているため、[class] で詳細度を合わせて上書きする */
+.md-typeset .admonition[class],
+.md-typeset details[class] {
+  border-color: var(--md-default-fg-color--lightest);
+}
+
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > summary {
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+/* 種類の色をタイトル帯にも薄く残す場合は、上の background-color を消して
+   以下のように型ごとに指定する (例: note)
+.md-typeset .note > .admonition-title {
+  background-color: rgba(68, 138, 255, 0.08);
+}
+*/
