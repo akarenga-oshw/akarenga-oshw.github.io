@@ -91,7 +91,7 @@ OSごとの基本操作は次のとおりです。
 3. 次のURLを1行で貼り付けます。
 
     ```text
-    https://akarenga-oshw.github.io/arduino-board-index/dev/package_akarenga_index.json
+    https://akarenga-oshw.github.io/arduino-board-index/package_akarenga_index.json
     ```
 
 4. すでに別のURLが登録されている場合は削除せず、新しい行へ追加します。
@@ -116,16 +116,14 @@ OSごとの基本操作は次のとおりです。
 <p><a href="assets/install-akarenga-board.gif"><img src="assets/install-akarenga-board.gif" alt="ボードマネージャーでAkarengaを検索し、バージョンを選んでインストールを完了する操作" width="1000" height="712" loading="lazy"></a></p>
 
 !!! note "バージョンについて"
-    2026年7月24日時点の開発版では、表示バージョンは`1.5.3-xtal2`です。今後バージョンが更新された場合は、プロジェクトから特別な指定がない限り新しい安定版を使用し、実際に使ったバージョンを記録してください。
+    2026年11月1日時点の開発版では、表示バージョンは`1.5.3-akarenga.1`です。今後バージョンが更新された場合は、プロジェクトから特別な指定がない限り新しい安定版を使用し、実際に使ったバージョンを記録してください。
 
 ## 7. ボードとポートを選択する
 
 1. Akarenga UNOをUSBケーブルでパソコンに接続します。
 2. Arduino IDE上部の**ツール → ボード**を開きます。
-3. **Akarenga UNO R4 Boards → Arduino UNO R4 Minima**を選びます。
+3. **Akarenga UNO R4 Boards → Akarenga UNO R4 Minima**を選びます。
 4. Akarenga UNOに対応するポートを**ツール → ポート**から選びます。
-
-ボード名は`Arduino UNO R4 Minima`と表示されます。必ず**Akarenga UNO R4 Boards**内から選んでください。
 
 <p><a href="assets/board-selection.gif"><img src="assets/board-selection.gif" alt="ツールからボードを開き、Akarenga UNO R4 Boards内のArduino UNO R4 Minimaを選ぶ操作" width="1000" height="490" loading="lazy"></a></p>
 
@@ -164,7 +162,7 @@ void loop() {
 
 ### 8.2 書き込む
 
-1. **Akarenga UNO R4 Boards**内の`Arduino UNO R4 Minima`を選択していることを確認します。
+1. `Arduino UNO R4 Minima`を選択していることを確認します。
 2. 選択中のポートを確認します。
 3. Arduino IDE左上の**書き込み**ボタン（右向き矢印）をクリックします。
 4. 画面下部に書き込み完了の表示が出るまで待ちます。
