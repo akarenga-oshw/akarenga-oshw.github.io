@@ -12,9 +12,6 @@ tags:
 
 Arduino IDEを使い、Akarenga UNOの開発環境を導入して、LED点滅（Blink）とシリアル通信を確認するまでの手順です。
 
-> ボードパッケージ：`Akarenga UNO R4 Boards 1.5.3-xtal2`  
-> ボード名（IDEでの表示）：`Arduino UNO R4 Minima`（`Akarenga UNO R4 Boards`内）
-
 ## 1. この手順でできること
 
 この手順を最後まで行うと、次の状態になります。
